@@ -1,0 +1,25 @@
+﻿<Window x:Class="SCTools.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="关于 SC-Tools" Height="300" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Icon="image/SC.ico">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="pack://application:,,,/SCTools;component/image/About_bg.png"/>
+        </Grid.Background>
+        <Button FontSize="16" FontWeight="Bold" Margin="32,14,32,189" IsEnabled="False">
+            <Button.OpacityMask>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Offset="0" Color="Black"></GradientStop>
+                    <GradientStop Offset="1" Color="Transparent"></GradientStop>
+                </LinearGradientBrush>
+            </Button.OpacityMask>
+            <Button.Content>
+                <StackPanel>
+                    <TextBlock Foreground="#FF0C0C63" FontSize="16">SC-Tools</TextBlock>
+                    <TextBlock Foreground="#FF0C0C63" FontSize="13">Design by liu.sc</TextBlock>
+                    <TextBlock Foreground="#FF0C0C63" FontSize="13">版本 1.3.0.0</TextBlock>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+    </Grid>
+</Window>
