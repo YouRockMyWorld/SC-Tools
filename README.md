@@ -10,6 +10,8 @@ Revit二次开发工具![Smile](https://github.com/YouRockMyWorld/SC-Tools/blob/
 
 * [Revit 2017](https://github.com/YouRockMyWorld/SC-Tools/tree/master/SCTools2017)
 
+其它版本整理后再传。
+
 
 
 ## 功能
