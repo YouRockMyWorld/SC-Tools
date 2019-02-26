@@ -1,0 +1,97 @@
+﻿<Window x:Class="SCTools.WallOption"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Title="房间边界生成楼板   -   Design by Liu.SC" Height="590" Width="350" ResizeMode="NoResize" Icon="image/SC.ico">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <!--<RowDefinition Height="30"/>-->
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="135"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Height="10"/>
+                <TextBlock Height="25" Text="  墙（面层）自动生成选项:" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18"/>
+                <TextBlock Height="5"/>
+                <Separator Height="10"/>
+                <StackPanel Orientation="Horizontal" Height="30" >
+                    <TextBlock Text="  墙体类型：" FontSize="16" VerticalAlignment="Center" Width="130"/>
+                    <ComboBox Name="cbb_WallType" ItemsSource="{Binding}" DisplayMemberPath="Name" Width="180" Height="25" FontSize="14"/>
+                </StackPanel>
+                <TextBlock Height="10"/>
+                <StackPanel Orientation="Horizontal" Height="30">
+                    <TextBlock Text="  底部限制条件：" FontSize="16" VerticalAlignment="Center" Width="130"/>
+                    <ComboBox Name="cbb_BottomLevel" ItemsSource="{Binding}" DisplayMemberPath="Name" Width="180" Height="25" FontSize="14" SelectionChanged="SelectionChanged_cbb_BottomLevel"/>
+                </StackPanel>
+                <TextBlock Height="10"/>
+                <StackPanel Orientation="Horizontal" Height="30" >
+                    <TextBlock Text="  底部偏移：" FontSize="16" VerticalAlignment="Center" Width="130"/>
+                    <TextBox Name="tb_BottomOffset" Text="0.0" FontSize="16" VerticalContentAlignment="Center" Width="100" Height="25" InputMethod.IsInputMethodEnabled="False" PreviewTextInput="PreviewTextInput_tb_Validator" CommandManager.PreviewExecuted="PreviewExecute_tb_KeyValidator" PreviewKeyDown="PreviewKeyDown_tb_KeyValidator"/>
+                    <TextBlock Text=" mm" FontSize="14" VerticalAlignment="Center"/>
+                </StackPanel>
+                <TextBlock Height="10"/>
+                <StackPanel Orientation="Horizontal" Height="30">
+                    <TextBlock Text="  顶部约束：" FontSize="16" VerticalAlignment="Center" Width="130"/>
+                    <ComboBox Name="cbb_TopLevel" ItemsSource="{Binding}" DisplayMemberPath="MyName" Width="180" Height="25" FontSize="14" SelectionChanged="SelectionChanged_cbb_TopLevel">
+                        <!--<ComboBox.ItemsSource>
+                            <CompositeCollection>
+                                <TextBlock Text="未连接"/>
+                                <CollectionContainer x:Name="cbb_TopLevelCol" Collection="{Binding }"/>
+                            </CompositeCollection>
+                        </ComboBox.ItemsSource>-->
+                    </ComboBox>
+                </StackPanel>
+                <TextBlock Height="10"/>
+                <StackPanel Orientation="Horizontal" Height="30" >
+                    <TextBlock Text="  无连接高度：" FontSize="16" VerticalAlignment="Center" Width="130"/>
+                    <TextBox Name="tb_Height" Text="3000.0" FontSize="16" VerticalContentAlignment="Center" Width="100" Height="25" InputMethod.IsInputMethodEnabled="False" PreviewTextInput="PreviewTextInput_tb_Validator" CommandManager.PreviewExecuted="PreviewExecute_tb_KeyValidator" PreviewKeyDown="PreviewKeyDown_tb_KeyValidator"/>
+                    <TextBlock Text=" mm" FontSize="14" VerticalAlignment="Center"/>
+                </StackPanel>
+                <TextBlock Height="10"/>
+                <StackPanel Orientation="Horizontal" Height="30" >
+                    <TextBlock Text="  顶部偏移：" FontSize="16" VerticalAlignment="Center" Width="130"/>
+                    <TextBox Name="tb_TopOffset" Text="0.0" FontSize="16" VerticalContentAlignment="Center" Width="100" Height="25" InputMethod.IsInputMethodEnabled="False" PreviewTextInput="PreviewTextInput_tb_Validator" CommandManager.PreviewExecuted="PreviewExecute_tb_KeyValidator" PreviewKeyDown="PreviewKeyDown_tb_KeyValidator"/>
+                    <TextBlock Text=" mm" FontSize="14" VerticalAlignment="Center"/>
+                </StackPanel>
+                <TextBlock Height="10"/>
+                <StackPanel Orientation="Horizontal" Height="30" >
+                    <TextBlock Text="  是否房间边界：" FontSize="16" VerticalAlignment="Center" Width="130"/>
+                    <RadioButton Name="rb_IsRoomBoundary1" Content="是" IsChecked="True" FontSize="16" VerticalContentAlignment="Center" Width="80" Height="25"/>
+                    <RadioButton Name="rb_IsRoomBoundary2" Content="否" FontSize="16" VerticalContentAlignment="Center" Width="80" Height="25"/>
+                </StackPanel>
+                <TextBlock Height="10"/>
+                <StackPanel Orientation="Horizontal" Height="30" >
+                    <TextBlock Text="  是否结构：" FontSize="16" VerticalAlignment="Center" Width="130"/>
+                    <RadioButton Name="rb_IsStructural1" Content="是" IsChecked="True" FontSize="16" VerticalContentAlignment="Center" Width="80" Height="25"/>
+                    <RadioButton Name="rb_IsStructural2" Content="否" FontSize="16" VerticalContentAlignment="Center" Width="80" Height="25"/>
+                </StackPanel>
+                <TextBlock Height="10"/>
+                <StackPanel Orientation="Horizontal" Height="30" >
+                    <TextBlock Text="  是否连接邻墙：" FontSize="16" VerticalAlignment="Center" Width="130"/>
+                    <RadioButton Name="rb_IsJoinWithWall1" Content="是" IsChecked="True" FontSize="16" VerticalContentAlignment="Center" Width="80" Height="25"/>
+                    <RadioButton Name="rb_IsJoinWithWall2" Content="否" FontSize="16" VerticalContentAlignment="Center" Width="80" Height="25"/>
+                </StackPanel>
+                <Separator Height="5"/>
+
+            </StackPanel>
+            
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Vertical" >
+                <TextBlock Text="  说明：&#x000A;  不选择底部限制条件将根据房间所在标高生成；&#x000A;  输入框需将内容清空才能输入负号“-”；&#x000A;  顶部标高不能低于底部标高；" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" FontStyle="Italic"/>
+                <Separator Height="3"/>
+                <Separator Height="3"/>
+                <TextBlock Height="5"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button Name="b_Apply" Content="确定" Width="60" Height="25" Click="Click_b_Apply"/>
+                    <TextBlock Width="30"/>
+                    <Button Name="b_Cancel" Content="取消" Width="60" Height="25" Click="Click_b_Cancel"/>
+                </StackPanel>
+                <TextBlock Height="5"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,70 @@
+﻿<Window x:Class="SCTools.FormOption"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Title="生成体量   -   Design by Liu.SC" Height="400" Width="650" ResizeMode="NoResize" Icon="image/SC.ico">
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBlock}" x:Key="DataGridContentStyle">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <Button Name="b_Open" Content="打开数据文件" Click="Click_b_Open" Height="25" Width="80"/>
+            <TextBlock Text="   已选择文件：" FontSize="14" VerticalAlignment="Center"/>
+            <TextBlock Name="tb_DataFilePath" Text="" FontSize="14" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <DataGrid Name="dg_PointList1" Grid.Column="0" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False" ItemsSource="{Binding}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="X1" Width="90" Binding="{Binding Path=X}" ElementStyle="{StaticResource DataGridContentStyle}"/>
+                    <DataGridTextColumn Header="Y1" Width="90" Binding="{Binding Path=Y}" ElementStyle="{StaticResource DataGridContentStyle}"/>
+                    <DataGridTextColumn Header="Z1" Width="90" Binding="{Binding Path=Z}" ElementStyle="{StaticResource DataGridContentStyle}"/>
+                </DataGrid.Columns>
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+            </DataGrid>
+
+            <DataGrid Name="dg_PointList2" Grid.Column="1" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False" ItemsSource="{Binding}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="X2" Width="90" Binding="{Binding Path=X}" ElementStyle="{StaticResource DataGridContentStyle}"/>
+                    <DataGridTextColumn Header="Y2" Width="90" Binding="{Binding Path=Y}" ElementStyle="{StaticResource DataGridContentStyle}"/>
+                    <DataGridTextColumn Header="Z2" Width="90" Binding="{Binding Path=Z}" ElementStyle="{StaticResource DataGridContentStyle}"/>
+                </DataGrid.Columns>
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+            </DataGrid>
+        </Grid>
+
+        <StackPanel Orientation="Vertical" Grid.Row="2" VerticalAlignment="Center">
+            
+            <StackPanel Orientation="Horizontal" Height="30">
+                <TextBlock Width="10"/>
+                <CheckBox Name="cb_IsSolid" Content="实心形状" IsChecked="True" VerticalAlignment="Center"/>
+                <TextBlock Width="30"/>
+                <CheckBox Name="cb_IsOnlyCurve" Content="只生成曲线和点" IsChecked="False" VerticalAlignment="Center"/>
+            </StackPanel>
+            <Separator Height="5"/>
+            <Button Name="b_Create" Content="创建体量" IsEnabled="False" Click="Click_b_CreateForm" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</Window>
