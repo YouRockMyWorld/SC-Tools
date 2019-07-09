@@ -25,8 +25,30 @@ Revit二次开发工具![Smile](https://github.com/YouRockMyWorld/SC-Tools/blob/
 
 ## 更新
 
-* 代码进行了重构，未上传
-* 添加了一些功能，`物探数据检测和管线生成`、`Schedule导出`、`房间面层装修一键生成`；
+* 2018.06
+
+```
+初始几个功能完成
+```
+
+* 2018.12
+
+```diff
++ 构件批量旋转
++ 点生成体量
+```
+
+* 2019.06
+
+```diff 
++ 代码重构
+- 删除不必要辅助函数
+```
+
+* 2019.07
+```
+添加了一些功能，物探数据检测及管线生成、Schedule导出、房间面层装修一键生成；
+```
 
 ![管线0](https://github.com/YouRockMyWorld/SC-Tools/blob/master/doc/images/%E7%AE%A1%E7%BA%BF0.png)
 
